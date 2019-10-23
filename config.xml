@@ -1,0 +1,8 @@
+<DoorService>
+	<HttpServer>
+		<host port="52105"/>
+	</HttpServer>
+	<Logs>
+		<level file="1" console="0"/>
+	</Logs>
+</DoorService>

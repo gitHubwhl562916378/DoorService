@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 2.8)
+
+set(cpprestsdk_DIR /usr/local/cpprest-sdk/lib/cpprestsdk)
+set(spdlog_DIR /usr/local/spdlog/lib/spdlog/cmake)
+set(Poco_DIR /usr/local/poco/lib/cmake/Poco)
+project(DoorService)
+add_compile_options(-std=c++11 -fpermissive)
+FILE(GLOB SRC_FILES "./*.cpp")
+FILE(GLOB HEAD_FILES "./*.h")
+find_package(cpprestsdk REQUIRED)
+find_package(spdlog REQUIRED)
+find_package(Poco REQUIRED Util)
+
+add_executable(${PROJECT_NAME} ${SRC_FILES})
+target_link_libraries(${PROJECT_NAME} spdlog::spdlog_header_only cpprestsdk::cpprest boost_system ssl crypto boost_thread pthread)
+target_link_libraries(${PROJECT_NAME} ${Poco_LIBRARIES})
